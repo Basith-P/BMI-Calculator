@@ -1,24 +1,67 @@
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatefulWidget {
+class InputPage extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _InputPageState createState() => _InputPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('BMI CALCULATOR')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: ReusableCard(color: Color(0xff1d1e33)),
+                    ),
+                    Expanded(
+                      child: ReusableCard(color: Color(0xff1d1e33)),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: ReusableCard(color: Color(0xff1d1e33)),
+              ),
+              Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: ReusableCard(color: Color(0xff1d1e33)),
+                    ),
+                    Expanded(
+                      child: ReusableCard(color: Color(0xff1d1e33)),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
+      ),
+    );
+  }
+}
+
+class ReusableCard extends StatelessWidget {
+  final Color color;
+
+  ReusableCard({required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: color,
       ),
     );
   }
