@@ -1,16 +1,15 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../widgets/icon_content.dart';
-import '../widgets/reusable_card.dart';
+import '/utils/constants.dart';
+import '/widgets/icon_content.dart';
+import '/widgets/reusable_card.dart';
 
-const buttonContainerHeight = 80.0;
-const activeCardColor = Color(0xff1d1e33);
-const inactiveCardColor = Color(0xff111328);
-const pink = Color(0xffeb1555);
+enum Gender {
+  male,
+  female,
+}
 
 class InputPage extends StatefulWidget {
   @override
@@ -18,26 +17,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color maleCardColor = inactiveCardColor;
-  Color femaleCardColor = inactiveCardColor;
-
-  void updateColor(String gender) {
-    if (gender == 'm') {
-      if (maleCardColor == inactiveCardColor) {
-        maleCardColor = activeCardColor;
-        femaleCardColor = inactiveCardColor;
-      } else {
-        maleCardColor = inactiveCardColor;
-      }
-    } else {
-      if (femaleCardColor == inactiveCardColor) {
-        femaleCardColor = activeCardColor;
-        maleCardColor = inactiveCardColor;
-      } else {
-        femaleCardColor = inactiveCardColor;
-      }
-    }
-  }
+  Gender? selectedGender;
+  int height = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -50,39 +31,38 @@ class _InputPageState extends State<InputPage> {
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
                 child: Row(
                   children: [
                     Expanded(
-                      child: GestureDetector(
-                        onTap: () {
+                      child: ReusableCard(
+                        onPress: () {
                           setState(() {
-                            updateColor('m');
+                            selectedGender = Gender.male;
                           });
                         },
-                        child: ReusableCard(
-                          color: maleCardColor,
-                          child: IconContent(
-                            iconData: FontAwesomeIcons.mars,
-                            label: 'MALE',
-                          ),
+                        color:
+                            selectedGender == Gender.male ? kActiveCardColor : kInactiveCardColor,
+                        child: IconContent(
+                          iconData: FontAwesomeIcons.mars,
+                          label: 'MALE',
                         ),
                       ),
                     ),
                     Expanded(
-                      child: GestureDetector(
-                        onTap: () {
+                      child: ReusableCard(
+                        onPress: () {
                           setState(() {
-                            updateColor('f');
+                            selectedGender = Gender.female;
                           });
                         },
-                        child: ReusableCard(
-                          color: femaleCardColor,
-                          child: IconContent(
-                            iconData: FontAwesomeIcons.venus,
-                            label: 'FEMALE',
-                          ),
+                        color:
+                            selectedGender == Gender.female ? kActiveCardColor : kInactiveCardColor,
+                        child: IconContent(
+                          iconData: FontAwesomeIcons.venus,
+                          label: 'FEMALE',
                         ),
                       ),
                     ),
@@ -90,23 +70,68 @@ class _InputPageState extends State<InputPage> {
                 ),
               ),
               Expanded(
-                child: ReusableCard(color: activeCardColor),
+                child: ReusableCard(
+                  color: kActiveCardColor,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'HEIGHT',
+                        style: kLabelTextStyle,
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          Text(
+                            height.toString(),
+                            style: kNumberTextStyle,
+                          ),
+                          Text(
+                            'cm',
+                            style: kLabelTextStyle,
+                          )
+                        ],
+                      ),
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          thumbColor: kPink,
+                          activeTrackColor: Colors.white,
+                          overlayColor: kPink.withOpacity(0.16),
+                          inactiveTrackColor: Color(0xff8e8d98),
+                        ),
+                        child: Slider(
+                          value: height.toDouble(),
+                          min: 80,
+                          max: 280,
+                          onChanged: (double newValue) {
+                            setState(() {
+                              height = newValue.round();
+                            });
+                          },
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
               Expanded(
                 child: Row(
                   children: [
                     Expanded(
-                      child: ReusableCard(color: activeCardColor),
+                      child: ReusableCard(color: kActiveCardColor),
                     ),
                     Expanded(
-                      child: ReusableCard(color: activeCardColor),
+                      child: ReusableCard(color: kActiveCardColor),
                     ),
                   ],
                 ),
               ),
               Container(
-                height: buttonContainerHeight,
-                child: ReusableCard(color: pink),
+                height: kButtonContainerHeight,
+                child: ReusableCard(color: kPink),
               )
             ],
           ),
