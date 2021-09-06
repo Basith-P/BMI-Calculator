@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../widgets/icon_content.dart';
+import '../widgets/reusable_card.dart';
+
 const buttonContainerHeight = 80.0;
 const darkBlue = Color(0xff1d1e33);
 const pink = Color(0xffeb1555);
@@ -26,10 +31,22 @@ class _InputPageState extends State<InputPage> {
                 child: Row(
                   children: [
                     Expanded(
-                      child: ReusableCard(color: darkBlue),
+                      child: ReusableCard(
+                        color: darkBlue,
+                        child: IconContent(
+                          iconData: FontAwesomeIcons.mars,
+                          label: 'MALE',
+                        ),
+                      ),
                     ),
                     Expanded(
-                      child: ReusableCard(color: darkBlue),
+                      child: ReusableCard(
+                        color: darkBlue,
+                        child: IconContent(
+                          iconData: FontAwesomeIcons.venus,
+                          label: 'FEMALE',
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -56,25 +73,6 @@ class _InputPageState extends State<InputPage> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  final Color color;
-  final Widget? child;
-
-  ReusableCard({required this.color, this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: child,
-      margin: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: color,
       ),
     );
   }
