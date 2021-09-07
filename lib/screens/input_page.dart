@@ -6,6 +6,7 @@ import '/utils/constants.dart';
 import '/widgets/icon_content.dart';
 import '/widgets/reusable_card.dart';
 import '/widgets/round_corner_icon_button.dart';
+import 'result_page.dart';
 
 enum Gender {
   male,
@@ -208,9 +209,29 @@ class _InputPageState extends State<InputPage> {
                   ],
                 ),
               ),
-              Container(
-                height: kButtonContainerHeight,
-                child: ReusableCard(color: kPink),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ResultPage();
+                      },
+                    ),
+                  );
+                },
+                child: Container(
+                  height: kButtonContainerHeight,
+                  child: ReusableCard(
+                    color: kPink,
+                    child: Center(
+                      child: Text(
+                        'CALCULATE',
+                        style: kLabelTextStyle.copyWith(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
               )
             ],
           ),
