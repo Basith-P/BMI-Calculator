@@ -6,11 +6,12 @@ const kLabelTextStyle = TextStyle(
 );
 
 const kNumberTextStyle = TextStyle(
+  fontFamily: 'Roboto',
   fontSize: 50,
   fontWeight: FontWeight.w900,
 );
 
 const kButtonContainerHeight = 80.0;
-const kActiveCardColor = Color(0xff1d1e33);
-const kInactiveCardColor = Color(0xff111328);
-const kPink = Color(0xffeb1555);
+const kActiveCardColor = Color(0xFF1D1E33);
+const kInactiveCardColor = Color(0xFF111328);
+const kPink = Color(0xFFEB1555);
