@@ -5,9 +5,9 @@ import '/widgets/reusable_card.dart';
 import '/widgets/bottom_button.dart';
 
 class ResultPage extends StatelessWidget {
-  String bmiResult;
-  String resultText;
-  String interpretation;
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
 
   ResultPage({required this.bmiResult, required this.resultText, required this.interpretation});
 
