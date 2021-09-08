@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '/utils/constants.dart';
+import '/widgets/reusable_card.dart';
+import '/widgets/bottom_button.dart';
+
 class ResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -7,6 +11,55 @@ class ResultPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('BMI CALCULATOR'),
         centerTitle: true,
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(15),
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    'Result',
+                    style: kTitleTextStyle,
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 6,
+                child: ReusableCard(
+                  color: kActiveCardColor,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'NORMAL',
+                        style: kResultTextStyle,
+                      ),
+                      Text(
+                        '18.6',
+                        style: kBMITextStyle,
+                      ),
+                      Text(
+                        'You should eat more!!',
+                        style: kBodyTextStyle,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              BottomButton(
+                text: 'Recalculate',
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

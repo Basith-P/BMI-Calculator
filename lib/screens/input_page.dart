@@ -7,6 +7,7 @@ import '/widgets/icon_content.dart';
 import '/widgets/reusable_card.dart';
 import '/widgets/round_corner_icon_button.dart';
 import 'result_page.dart';
+import '/widgets/bottom_button.dart';
 
 enum Gender {
   male,
@@ -209,7 +210,8 @@ class _InputPageState extends State<InputPage> {
                   ],
                 ),
               ),
-              GestureDetector(
+              BottomButton(
+                text: 'CALCULATE',
                 onTap: () {
                   Navigator.push(
                     context,
@@ -220,19 +222,7 @@ class _InputPageState extends State<InputPage> {
                     ),
                   );
                 },
-                child: Container(
-                  height: kButtonContainerHeight,
-                  child: ReusableCard(
-                    color: kPink,
-                    child: Center(
-                      child: Text(
-                        'CALCULATE',
-                        style: kLabelTextStyle.copyWith(color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
-              )
+              ),
             ],
           ),
         ),
