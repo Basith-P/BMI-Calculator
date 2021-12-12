@@ -32,6 +32,7 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: Text('BMI CALCULATOR'),
         centerTitle: true,
+        backgroundColor: kActiveCardColor,
       ),
       body: SafeArea(
         child: Padding(

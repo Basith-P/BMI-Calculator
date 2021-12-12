@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '/utils/constants.dart';
 import '/widgets/reusable_card.dart';
@@ -17,7 +18,12 @@ class ResultPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('BMI CALCULATOR'),
         centerTitle: true,
-        backgroundColor: Colors.blue[900],
+        backgroundColor: kActiveCardColor,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios_new_rounded)),
       ),
       body: SafeArea(
         child: Padding(
