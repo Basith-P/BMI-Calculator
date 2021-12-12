@@ -147,18 +147,22 @@ class _InputPageState extends State<InputPage> {
                                 RoundCornerIconButton(
                                   icon: FontAwesomeIcons.minus,
                                   onPressed: () {
-                                    setState(() {
-                                      weight--;
-                                    });
+                                    if (weight > 1) {
+                                      setState(() {
+                                        weight--;
+                                      });
+                                    }
                                   },
                                 ),
                                 const SizedBox(width: 15),
                                 RoundCornerIconButton(
                                   icon: FontAwesomeIcons.plus,
                                   onPressed: () {
-                                    setState(() {
-                                      weight++;
-                                    });
+                                    if (weight < 280) {
+                                      setState(() {
+                                        weight++;
+                                      });
+                                    }
                                   },
                                 ),
                               ],
@@ -188,18 +192,22 @@ class _InputPageState extends State<InputPage> {
                                 RoundCornerIconButton(
                                   icon: FontAwesomeIcons.minus,
                                   onPressed: () {
-                                    setState(() {
-                                      age--;
-                                    });
+                                    if (age > 1) {
+                                      setState(() {
+                                        age--;
+                                      });
+                                    }
                                   },
                                 ),
                                 const SizedBox(width: 15),
                                 RoundCornerIconButton(
                                   icon: FontAwesomeIcons.plus,
                                   onPressed: () {
-                                    setState(() {
-                                      age++;
-                                    });
+                                    if (age < 130) {
+                                      setState(() {
+                                        age++;
+                                      });
+                                    }
                                   },
                                 ),
                               ],

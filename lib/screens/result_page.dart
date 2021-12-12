@@ -17,6 +17,7 @@ class ResultPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('BMI CALCULATOR'),
         centerTitle: true,
+        backgroundColor: Colors.blue[900],
       ),
       body: SafeArea(
         child: Padding(
